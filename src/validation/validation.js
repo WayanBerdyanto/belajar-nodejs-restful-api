@@ -1,4 +1,4 @@
-import ResponseError from "../error/response-error.js";
+import {ResponseError} from "../error/response-error.js";
 
 const validation = (scema, request) => {
   const result = scema.validate(request);
@@ -9,4 +9,4 @@ const validation = (scema, request) => {
   }
 };
 
-export default validation;
+export {validation};

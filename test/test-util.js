@@ -42,7 +42,7 @@ export const createTestContact = async () => {
             username: "test",
             first_name: "test",
             last_name: "test",
-            email: "test@pzn.com",
+            email: "test@wayan.com",
             phone: "080900000"
         }
     })
@@ -55,7 +55,7 @@ export const createManyTestContacts = async () => {
                 username: `test`,
                 first_name: `test ${i}`,
                 last_name: `test ${i}`,
-                email: `test${i}@pzn.com`,
+                email: `test${i}@wayan.com`,
                 phone: `080900000${i}`
             }
         })

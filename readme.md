@@ -60,6 +60,7 @@ npx prisma --help
 
 ### MIGRATION 
 ```
+npm i prisma @prisma/client
 npx prisma migrate dev --create-only
 npx prisma dev
 ```

@@ -1,0 +1,2 @@
+-- Active: 1725283397397@@127.0.0.1@3306@belajar_nodejs
+-- This is an empty migration.

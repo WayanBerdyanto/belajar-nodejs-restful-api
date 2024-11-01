@@ -13,6 +13,8 @@ userRouter.delete('/api/users/logout', userController.logoutuser);
 // Contact API
 userRouter.post('/api/contacts', contactController.createContact);
 userRouter.get('/api/contacts/:contactId', contactController.getContact);
+userRouter.put('/api/contacts/:contactId', contactController.updateContact);
+
 export {
     userRouter
 }

@@ -172,4 +172,59 @@ describe('PUT /api/contacts/:contactId/addresses/:addressId', function () {
         expect(result.body.data.country).toBe("indonesia");
         expect(result.body.data.postal_code).toBe("1111");
     });
+
+    it('should reject if request is not valid', async () => {
+        const testContact = await getTestContact();
+        const testAddress = await getTestAddress();
+
+        const result = await supertest(web)
+            .put('/api/contacts/' + testContact.id + '/addresses/' + testAddress.id)
+            .set('Authorization', 'test')
+            .send({
+                street: "street",
+                city: 'city',
+                province: 'provinsi',
+                country: '',
+                postal_code: ''
+            });
+
+        expect(result.status).toBe(400);
+    });
+
+    it('should reject if address is not found', async () => {
+        const testContact = await getTestContact();
+        const testAddress = await getTestAddress();
+
+        const result = await supertest(web)
+            .put('/api/contacts/' + testContact.id + '/addresses/' + (testAddress.id + 1))
+            .set('Authorization', 'test')
+            .send({
+                street: "street",
+                city: 'city',
+                province: 'provinsi',
+                country: 'indonesia',
+                postal_code: '2312323'
+            });
+
+        expect(result.status).toBe(404);
+    });
+
+    it('should reject if contact is not found', async () => {
+        const testContact = await getTestContact();
+        const testAddress = await getTestAddress();
+
+        const result = await supertest(web)
+            .put('/api/contacts/' + (testContact.id + 1) + '/addresses/' + testAddress.id)
+            .set('Authorization', 'test')
+            .send({
+                street: "street",
+                city: 'city',
+                province: 'provinsi',
+                country: 'indonesia',
+                postal_code: '2312323'
+            });
+
+        expect(result.status).toBe(404);
+    });
+
 });

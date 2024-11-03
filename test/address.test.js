@@ -142,38 +142,34 @@ describe('PUT /api/contacts/:contactId/addresses/:addressId', function () {
         await createTestUser();
         await createTestContact();
         await createTestAddress();
-    });
+    })
 
     afterEach(async () => {
         await removeAllTestAddresses();
         await removeAllTestContacts();
         await removeTestUser();
-    });
+    })
 
     it('should update an address', async () => {
         const testContact = await getTestContact();
         const testAddress = await getTestAddress();
 
         const result = await supertest(web)
-            .put(`/api/contacts/${testContact.id}/addresses/${testAddress.id}`)
+            .put('/api/contacts/' + testContact.id + '/addresses/' + testAddress.id)
             .set('Authorization', 'test')
             .send({
-                street: 'jalan test updated',
-                city: 'kota test updated',
-                province: 'provinsi test updated',
+                street: "street",
+                city: 'city',
+                province: 'provinsi',
                 country: 'indonesia',
-                postal_code: '234234 updated'
+                postal_code: '1111'
             });
-
-
-        logger.info('Test response status:', result.status);
-        logger.info('Test response body:', result.body);
         expect(result.status).toBe(200);
         expect(result.body.data.id).toBe(testAddress.id);
-        expect(result.body.data.street).toBe('jalan test updated');
-        expect(result.body.data.city).toBe('kota test updated');
-        expect(result.body.data.province).toBe('provinsi test updated');
-        expect(result.body.data.country).toBe('indonesia');
-        expect(result.body.data.postal_code).toBe('234234 updated');
+        expect(result.body.data.street).toBe("street");
+        expect(result.body.data.city).toBe("city");
+        expect(result.body.data.province).toBe("provinsi");
+        expect(result.body.data.country).toBe("indonesia");
+        expect(result.body.data.postal_code).toBe("1111");
     });
 });

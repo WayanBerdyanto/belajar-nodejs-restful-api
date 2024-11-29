@@ -25,6 +25,10 @@ userRouter.get('/api/contacts/:contactId/addresses/:addressId', addressControlle
 
 userRouter.put('/api/contacts/:contactId/addresses/:addressId', addressController.updateAddress);
 
+userRouter.delete('/api/contacts/:contactId/addresses/:addressId', addressController.removeAddress);
+
+userRouter.get('/api/contacts/:contactId/addresses', addressController.listAddress);
+
 export {
     userRouter
 }

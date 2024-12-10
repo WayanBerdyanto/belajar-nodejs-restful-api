@@ -37,7 +37,7 @@ Response Body Error :
 
 ```json
 {
-  "errors": "Email is not valid format"
+  "errors": "Email is not valid form at"
 }
 ```
 

@@ -1,3 +1,7 @@
+# END POINT
+https://user-api.up.railway.app/
+See Docs [https://github.com/WayanBerdyanto/belajar-nodejs-restful-api/tree/main/docs]
+
 # Validation
 
 ### For Validation
